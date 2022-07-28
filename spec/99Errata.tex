@@ -1,0 +1,54 @@
+\clearpage
+\chapter*{\mbox{}\hfill Поправка к официальной редакции\hfill\mbox{}}
+
+\mbox{}
+
+\begin{center}
+\begin{tabular}{|p{2.9cm}|p{6.3cm}|p{6.3cm}|}
+\hline
+В каком месте & Напечатано & Должно быть\\
+\hline
+\hline
+Подраздел~\ref{AUX}
+&
+{\bf Алгоритм $\algname{belt-cfb}^{-1}$}.
+В протоколе BPACE используется алгоритм расшифрования\ldots
+&
+{\bf Алгоритм $\algname{belt-cfb}^{-1}$}.
+В протоколе BSTS используется алгоритм расшифрования\ldots 
+\\
+\hline
+Пункт~\ref{MQV.Steps},\par
+шаг 4.4
+&
+$t\leftarrow\langle\algname{belt-hash}
+(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})\rangle$;
+&
+$t\leftarrow\langle\algname{belt-hash}
+(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})\rangle_l$;
+\\
+\hline
+Пункт~\ref{STS.Steps},\par
+шаг 4.7
+&
+проверяет, что\par
+$T_A\leftarrow\algname{belt-mac}(Y_A\parallel 0^{128}, K_1)$;
+&
+проверяет, что\par
+$T_A=\algname{belt-mac}(Y_A\parallel 0^{128}, K_1)$;
+\\
+\hline
+Приложение~\ref{DH},\par
+предпоследний абзац
+&
+Могут также использоваться долговременые 
+ключи ЭЦП, с помощью которых стороны вырабатывают и проверяют
+подписи данных обмена.
+&
+Могут также использоваться долговременные 
+ключи ЭЦП, с помощью которых стороны вырабатывают и проверяют
+подписи данных обмена.
+\\
+\hline
+\end{tabular}
+\end{center}

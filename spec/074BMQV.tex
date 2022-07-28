@@ -1,0 +1,153 @@
+\section{Протокол BMQV}\label{MQV}
+
+\subsection{Сообщения}\label{MQV.Messages}
+
+В протоколе BMQV
+cтороны пересылают друг другу следующие сообщения:
+
+M0 ($A\to B$): 
+$\mathimplicit{\hello_A}$;
+
+M1 ($B\to A$): 
+$\mathimplicit{\hello_B\parallel}\ 
+\mathimplicit{\Cert(Id_B, Q_B)\parallel}\ 
+\langle V_B\rangle_{4l}$;
+
+M2 ($A\to B$): 
+$\mathimplicit{\Cert(Id_A,Q_A)\parallel}\ 
+\langle V_A\rangle_{4l}\ \mathoptional{\parallel T_A}$;
+
+M3 ($B\to A$): 
+$\mathoptional{T_B}$.
+
+\subsection{Шаги}\label{MQV.Steps}
+
+Формирование общего ключа состоит в выполнении шагов, определенных ниже. При
+ошибке на любом из шагов, в том числе при отрицательном результате любой
+проверки, протокол прекращается и возвращается признак~\texttt{ОШИБКА}.
+
+\begin{enumerate}
+\item
+Сторона $A$:
+\begin{enumerate}
+\item
+\implicit{отправляет сообщение~M0}.
+\end{enumerate}
+
+\item
+Сторона~$B$:
+\begin{enumerate}
+\item
+\implicit{получает сообщение~M0};
+\item
+$u_B\stackrel{R}{\leftarrow}\{1,2,\ldots,q-1\}$
+(в соответствии с требованиями~\ref{COMMON.Ephemeral});
+\item
+$V_B\leftarrow u_B G$;
+\item
+отправляет сообщение~M1.
+\end{enumerate}
+\item
+Сторона $A$:
+\begin{enumerate}
+\item
+получает сообщение~M1;
+\item
+\implicit{проверяет $\Cert(Id_B,Q_B)$};
+\item
+проверяет, что $V_B\in E_{a,b}^*(\FF_p)$;
+\item
+$u_A\stackrel{R}{\leftarrow}\{1,2,\ldots,q-1\}$
+(в соответствии с требованиями~\ref{COMMON.Ephemeral});
+\item
+$V_A\leftarrow u_A G$;
+\item
+$t\leftarrow\bigl\langle
+\algname{belt-hash}
+(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})
+\bigr\rangle_{l}$;
+\item
+$s_A\leftarrow (u_A-(2^l+\overline{t})d_A)\bmod q$;
+\item
+$K\leftarrow s_A(V_B-(2^l+\overline{t})Q_B)$;
+\item
+если $K=O$, то $K\leftarrow G$;
+\item
+$K_0\leftarrow\algname{bake-kdf}
+(\langle K\rangle_{2l},
+\Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
+\hello_A\parallel\hello_B,
+0)$;
+\item
+$\mathoptional{
+K_1\leftarrow\algname{bake-kdf}
+(\langle K\rangle_{2l},
+\Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
+\hello_A\parallel\hello_B,
+1)}$;
+\item
+$\mathoptional{T_A\leftarrow\algname{belt-mac}(0^{128},K_1)}$;
+\item
+отправляет сообщение~M2.
+\end{enumerate}
+
+\item
+Сторона $B$:
+\begin{enumerate}
+\item
+получает сообщение~M2;
+\item
+\implicit{проверяет $\Cert(Id_A,Q_A)$};
+\item
+проверяет, что $V_A\in E_{a,b}^*(\FF_p)$;
+\item
+$t\leftarrow\bigl\langle
+\algname{belt-hash}
+(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})
+\bigr\rangle_{l}$;
+\item
+$s_B\leftarrow (u_B-(2^l+\overline{t})d_B)\bmod q$;
+\item
+$K\leftarrow s_B(V_A-(2^l+\overline{t})Q_A)$;
+\item
+если $K=O$, то $K\leftarrow G$;
+\item
+$K_0\leftarrow\algname{bake-kdf}
+(\langle K\rangle_{2l},
+\Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
+\hello_A\parallel\hello_B,
+0)$;
+\item
+$\mathoptional{
+K_1\leftarrow\algname{bake-kdf}
+(\langle K\rangle_{2l},
+\Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
+\hello_A\parallel\hello_B,
+1)}$;
+\item
+\optional{проверяет, что $T_A=\algname{belt-mac}(0^{128},K_1)$};
+\item
+$\mathoptional{T_B\leftarrow\algname{belt-mac}(1^{128},K_1)}$;
+\item
+\optional{отправляет сообщение~M3}.
+\end{enumerate}
+
+\item
+Сторона $A$:
+\begin{enumerate}
+\item
+\optional{получает сообщение~M3};
+\item
+\optional{проверяет, что $T_B=\algname{belt-mac}(1^{128},K_1)$}.
+\end{enumerate}
+\end{enumerate}
+
+Успешное выполнение всех шагов протокола означает, что 
+стороны выработали общий ключ~$K_0$.
+%
+Если при выполнении протокола  
+создавалась и обрабатывалась имитовставка~$T_A$ ($T_B$),
+то успешное завершение дополнительно означает,
+что сторона~$A$ ($B$) подтвердила свой ключ и, таким образом, 
+прошла аутентификацию перед противоположной стороной.
+

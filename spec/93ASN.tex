@@ -1,0 +1,66 @@
+\begin{appendix}{В}{рекомендуемое}
+{Модуль АСН.1}
+\label{ASN}
+
+\hiddensection{Идентификаторы}\label{ASN.OIDs}
+
+Алгоритмам и протоколам стандарта присваиваются 
+следующие идентификаторы:
+\begin{center}
+\begin{tabular}{p{4cm}p{12cm}}
+\texttt{bake-bmqv} &
+протокол BMQV (\ref{MQV});\\
+%
+\texttt{bake-bsts} &
+протокол BSTS (\ref{STS});\\
+%
+\texttt{bake-bpace} &
+протокол BPACE (\ref{PACE});\\
+%
+\texttt{bake-dh} &
+алгоритм определения общей точки по личному ключу 
+одной стороны и открытому ключу другой стороны,
+часть протокола Диффи~--- Хеллмана (приложение~\ref{DH});\\
+%
+\texttt{bake-kdf} &
+алгоритм построения ключа (\ref{KDF.Alg});\\
+%
+\texttt{bake-swu} &
+алгоритм построения точки эллиптической кривой (\ref{SWU.Alg}).\\
+\end{tabular}
+\end{center}
+
+Уровень стойкости протоколов ключа не указывается 
+в их идентификаторах и определяется по размерностям параметров 
+используемой эллиптической кривой. 
+
+Долговременному открытому ключу, 
+который используется в протоколах BMQV и BSTS, 
+присваивается идентификатор \texttt{bake-pubkey}.
+
+\hiddensection{Описание долговременного открытого ключа}\label{ASN.PubKey}
+
+На уровне стойкости~$l$ долговременному открытому ключу~$Q$ 
+ставится в соответствие двоичное слово~$\langle Q\rangle_{4l}$,
+для описания которого может использоваться тип \texttt{PublicKey},
+определенный в СТБ~34.101.45 (приложение~Д).
+
+В запросе на получение сертификата (СТБ~34.101.17),
+в сертификатах (СТБ~34.101.19)
+открытый ключ должен представляться значениями типа
+\texttt{SubjectPublicKeyInfo}. 
+Этот тип также определен в СТБ~34.101.45
+(приложение~Д).
+
+\hiddensection{Модуль АСН.1}\label{ASN.Module}
+
+\verbatiminput{bake-module-v1.asn}
+
+%  IMPORTS
+%    bign-curves, bign-curve256v1, bign-curve384v1, bign-curve512v1, 
+%    bign-fields, bign-primefield, AlgorithmIdentifier, DomainParameters,
+%    ECParameters, FieldID, Curve, PublicKey, SubjectPublicKeyInfo
+%    FROM Bign-module-v2 {iso(1) member-body(2) by(112) 0 2 0 34 101 
+%         45 module(1) ver2(2)}
+
+\end{appendix}

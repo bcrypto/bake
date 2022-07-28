@@ -1,0 +1,321 @@
+\begin{appendix}{Б}{справочное}
+{Проверочные примеры}
+\label{TEST}
+
+\hiddensection{Параметры эллиптической кривой}\label{TEST.Params}
+
+Во всех примерах используются параметры эллиптической кривой, 
+заданные в СТБ~34.101.45 (таблица Б.1). 
+
+\hiddensection{Идентификаторы и долговременные ключи}\label{TEST.Keys}
+
+В таблице~\ref{Table.TEST.IdKeys} представлены идентификаторы
+и долговременные ключи сторон протоколов BMQV и~BSTS. 
+Сертификаты сторон представляют
+собой объединение их идентификаторов и открытых ключей: 
+$\Cert(Id,Q)=Id\parallel\langle Q\rangle$.
+
+\begin{table}[H]
+\caption{Идентификаторы и долговременные ключи}\label{Table.TEST.IdKeys}
+{\small
+\begin{tabular}{|l|l|}
+\hline
+$\phantom{\langle}Id_A$ & 
+$\hex{416C6963~65}$\\
+%
+\hline
+\hline
+$\langle d_A\rangle_{256}$ & 
+$\hex{1F66B5B8~4B733967~4533F032~9C74F218~34281FED~0732429E~0C79235F~C273E269}$\\
+%
+\hline
+$\langle Q_A\rangle_{512}$ & 
+$\hexz{BD1A5650~179D79E0~3FCEE49D~4C2BD5DD~F54CE46D~0CF11E4F~F87BF7A8~90857FD0}$\\
+&
+$\hex{7AC6A603~61E8C817~3491686D~461B2826~190C2EDA~5909054A~9AB84D2A~B9D99A90}$\\
+%
+\hline
+\hline
+$\phantom{\langle}Id_B$ & 
+$\hex{426F62}$\\
+%
+\hline
+\hline
+$\langle d_B\rangle_{256}$ & 
+$\hex{4C0E74B2~CD5811AD~21F23DE7~E0FA742C~3ED6EC48~3C461CE1~5C33A77A~A308B7D2}$\\
+%
+\hline
+$\langle Q_B\rangle_{512}$ & 
+$\hexz{CCEEF1A3~13A40664~9D15DA0A~851D486A~695B641B~20611776~252FFDCE~39C71060}$ \\
+&
+$\hex{7C9EA1F3~3C23D20D~FCB8485A~88BE6523~A28ECC32~15B47FA2~89D6C9BE~1CE837C0}$\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\hiddensection{Приветственные сообщения}\label{TEST.Hello}
+
+Во всех примерах используются пустые приветственные сообщения
+$\hello_A$, $\hello_B$.
+
+\hiddensection{Протокол BMQV}\label{TEST.MQV}
+
+В таблице~\ref{Table.TEST.MQV} представлен сеанс протокола~BMQV.
+
+\begin{table}[H]
+\caption{Сеанс протокола BMQV}\label{Table.TEST.MQV}
+{\small
+\begin{tabular}{|l|l|}
+\hline
+$\langle u_B\rangle_{256}$ & 
+$\hex{0F51D913~47617C20~BD4AB07A~EF4F26A1~AD1362A8~F9A3D42F~BE1B8E6F~1C88AAD5}$\\
+%
+\hline
+$\langle V_B\rangle_{512}$ & 
+$\hexz{9B4EA669~DABDF100~A7D4B6E6~EB76EE52~51912531~F426750A~AC8A9DBB~51C54D8D}$\\
+&
+$\hex{6AB7DBF1~5FCBD768~EE68A173~F7B236EF~C15A01E2~AA6CD1FE~98B947DA~7B38A2A0}$\\
+%
+\hline
+\hline
+$\langle u_A\rangle_{256}$ & 
+$\hex{0A4E8298~BE0839E4~6F19409F~637F4415~572251DD~0D39284F~0F0390D9~3BBCE9EC}$\\
+%
+\hline
+$\langle V_A\rangle_{512}$ & 
+$\hexz{1D5A382B~962D4ED0~6193258C~A6DE535D~8FD7FACB~853171E9~32EF93B5~EE800120}$\\
+&
+$\hex{03DBB7B5~BD070363~80BAFA47~FCA7E6CA~3F179EDD~D1AE5086~64790918~3628EDDC}$\\
+%
+\hline
+$\phantom{\langle}t$ & 
+$\hex{BD46F58A~DE7C4DF9~826D32AB~A9113428}$\\
+%
+\hline
+$\langle s_A\rangle_{256}$ & 
+$\hex{AB4EB3A6~D867C861~52E61B64~7F1A32D9~93A7768F~79361F75~0AE7C7A6~5CD9A233}$\\
+%
+\hline
+$\langle K\rangle_{512}$ & 
+$\hexz{7FF3A0DA~CDFECB3C~D25F4D3C~334CCCB3~34C71FF7~1E2247DD~0688FA62~DF4C5920}$\\
+&
+$\hex{728CB855~98DA04B4~8D85D32D~0CDCCD92~3D88E844~9BAA5065~B4E4D1CB~EEE31D35}$\\
+%
+\hline
+$\phantom{\langle}K_0$ & 
+$\hex{C6F86D0E~468D5EF1~A9955B2E~E0CF0581~050C81D1~B4772709~2408E863~C7EEB48C}$\\
+%
+\hline
+$\phantom{\langle}K_1$ & 
+$\hex{E95BA3F6~45C58288~E8A1B37C~10ADD336~DB8BD7F6~75F94963~139769F2~E260C6A9}$\\
+%
+\hline
+$\phantom{\langle}T_A$ & 
+$\hex{413B7E18~1BAFB337}$\\
+%
+\hline
+\hline
+%
+$\langle s_B\rangle_{256}$ & 
+$\hex{B6099633~2B62DDB1~354EC03D~A949B528~969E6CA6~D8848C94~013B9CF6~FF42AEED}$\\
+%
+\hline
+$\phantom{\langle}T_B$ & 
+$\hex{B800A203~3AC7591B}$\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\hiddensection{Протокол BSTS}\label{TEST.STS}
+
+В таблице~\ref{Table.TEST.STS} представлен сеанс протокола~BSTS.
+
+\begin{table}[H]
+\caption{Сеанс протокола BSTS}\label{Table.TEST.STS}
+{\small
+\begin{tabular}{|l|l|}
+\hline
+$\langle u_B\rangle_{256}$ & 
+$\hex{0F51D913~47617C20~BD4AB07A~EF4F26A1~AD1362A8~F9A3D42F~BE1B8E6F~1C88AAD5}$\\
+%
+\hline
+$\langle V_B\rangle_{512}$ & 
+$\hexz{9B4EA669~DABDF100~A7D4B6E6~EB76EE52~51912531~F426750A~AC8A9DBB~51C54D8D}$\\
+&
+$\hex{6AB7DBF1~5FCBD768~EE68A173~F7B236EF~C15A01E2~AA6CD1FE~98B947DA~7B38A2A0}$\\
+%
+\hline
+\hline
+$\langle u_A\rangle_{256}$ & 
+$\hex{0A4E8298~BE0839E4~6F19409F~637F4415~572251DD~0D39284F~0F0390D9~3BBCE9EC}$\\
+%
+\hline
+$\langle V_A\rangle_{512}$ & 
+$\hexz{1D5A382B~962D4ED0~6193258C~A6DE535D~8FD7FACB~853171E9~32EF93B5~EE800120}$\\
+&
+$\hex{03DBB7B5~BD070363~80BAFA47~FCA7E6CA~3F179EDD~D1AE5086~64790918~3628EDDC}$\\
+%
+\hline
+$\langle K\rangle_{512}$ & 
+$\hexz{C9121850~4B2F10C8~B307B3F8~5A292930~8E48F334~51D2810A~AD788DE8~CA4C7347}$\\
+&
+$\hex{76932167~30B95FD3~C1439D6C~B99A1A0B~2898FC56~3558C8F5~18E235B9~D7441A6E}$\\
+%
+\hline
+$\phantom{\langle}K_0$ & 
+$\hex{78EF2C56~BD6DA211~6BB5BEE8~0CEE5C05~394E7609~183CF7F7~6DF0C2DC~FB25C4AD}$\\
+%
+\hline
+$\phantom{\langle}K_1$ & 
+$\hex{F02580E9~5C1E89BD~9E743C02~716E3E31~FA429298~AE0FD1FE~2BBA1B57~02E51B9D}$\\
+%
+\hline
+$\phantom{\langle}K_2$ & 
+$\hex{41283622~4A0C0964~1F3C3B88~8C7804FA~32B94A62~B5CB0066~518409F9~69191776}$\\
+%
+\hline
+$\phantom{\langle}t$ & 
+$\hex{BD46F58A~DE7C4DF9~826D32AB~A9113428}$\\
+%
+\hline
+$\langle s_A\rangle_{256}$ & 
+$\hex{AB4EB3A6~D867C861~52E61B64~7F1A32D9~93A7768F~79361F75~0AE7C7A6~5CD9A233}$\\
+%
+\hline
+$\phantom{\langle}Y_A$ & 
+$\hexz{A994115F~297D2FAD~342A0AF5~4FCDA66E~1E6A30FE~966662C4~3C2A73AF~A3CADF69}$\\
+&
+$\hexz{47344287~CB200795~61645867~8B76BA61~924AD05D~80BB81F5~3F8D5C4E~0EF55EBD}$\\
+&
+$\hexz{AFA674D7~ECD74CB0~609DE12B~C0463670~64059F01~1607DD18~62407490~1F1C5A40}$\\
+&
+$\hex{94C00655~9F}$\\
+%
+\hline
+$\phantom{\langle}T_A$ & 
+$\hex{1306D682~00087987}$\\
+%
+\hline
+\hline
+%
+$\langle s_B\rangle_{256}$ & 
+$\hex{B6099633~2B62DDB1~354EC03D~A949B528~969E6CA6~D8848C94~013B9CF6~FF42AEED}$\\
+%
+\hline
+$\phantom{\langle}Y_B$ & 
+$\hexz{6D45B2E7~6AF24422~ADC6D5D7~A3CFA37F~DCB52F7E~440222F1~AACECB98~BDED357B}$\\
+&
+$\hexz{BD459DF0~A3EE7A3E~AFE0199C~A5C4C072~7C33909E~4C322216~F6F53E38~3A3727D8}$\\
+&
+$\hexz{34B5D4F5~C977FC3B~7EBA6DCA~55C0F1A5~69BE3CD3~464B13C3~88D0DAC3~E6A82F9D}$\\
+&
+$\hex{2EF3D6}$\\
+%
+\hline
+$\phantom{\langle}T_B$ & 
+$\hex{CA7A5BAC~4EB2910E}$\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\clearpage
+\hiddensection{Протокол BPACE}\label{TEST.PACE}
+
+В таблице~\ref{Table.TEST.PACE} представлен сеанс протокола~BPACE.
+
+\begin{table}[H]
+\caption{Сеанс протокола BPACE}\label{Table.TEST.PACE}
+{\small
+\begin{tabular}{|l|l|}
+\hline
+$\phantom{\langle}P$ & 
+$\hex{38303836}$\\
+\hline
+%
+\hline
+$\phantom{\langle}R_B$ & 
+$\hex{0F51D913~47617C20~BD4AB07A~EF4F26A1}$\\
+%
+\hline
+$\phantom{\langle}K_2$ & 
+$\hex{3292E21E~6CD50D27~2532713B~A52570A4~C996319E~2436B385~7DB0ACB4~5660F4EB}$\\
+%
+\hline
+$\phantom{\langle}Y_B$ & 
+$\hex{991E8169~0B4C687C~86BFD11C~EBDA2421}$\\
+%
+\hline
+\hline
+%
+$\phantom{\langle}R_A$ & 
+$\hex{AD1362A8~F9A3D42F~BE1B8E6F~1C88AAD5}$\\
+%
+\hline
+$\phantom{\langle}Y_A$ & 
+$\hex{CE41B54D~C13A28BD~F74CEBD1~90881802}$\\
+%
+\hline
+$\langle W\rangle_{512}$ & 
+$\hexz{014417D3~35555731~7D2E2AB6~D0875487~8D19E8D9~7B71FDC9~5DBB2A9B~894D16D7}$\\
+& 
+$\hex{7704A0B5~CAA9CDA1~0791E476~0671E105~0DDEAB70~83A74584~47866ADB~01473810}$\\
+%
+\hline
+$\langle u_A\rangle_{256}$ & 
+$\hex{0A4E8298~BE0839E4~6F19409F~637F4415~572251DD~0D39284F~0F0390D9~3BBCE9EC}$\\
+%
+\hline
+$\langle V_A\rangle_{512}$ & 
+$\hexz{6B13ACBB~086FB876~18BCC2EF~20A3FA89~475654CB~367E670A~2441730B~24B8AB31}$\\
+& 
+$\hex{8209C81C~9640C47A~77B28E90~AB9211A1~DF21DE87~8191C314~061E347C~5125244F}$\\
+%
+\hline
+\hline
+%
+$\langle u_B\rangle_{256}$ & 
+$\hex{F81B29D5~71F6452F~F8B2B97F~57E18A58~BC946FEE~45EAB32B~06FCAC23~A33F422B}$\\
+%
+\hline
+$\langle V_B\rangle_{512}$ & 
+$\hexz{CD3D6487~DC4EEB23~45697818~6A069C71~375D75C2~DF198BAD~1E61EEA0~DBBFF737}$\\
+& 
+$\hex{3D1D9ED1~7A7AD460~AA420FB1~1952D580~78BC1CC9~F408F2E2~58FDE97F~22A44C6F}$\\
+%
+\hline
+$\langle K\rangle_{512}$ & 
+$\hexz{723356E3~35ED7062~0FFB1842~752092C3~2603EB66~60409205~87D80057~5BECFC42}$\\
+& 
+$\hex{0C4B4C9B~4AEB51D3~6FE2EDEB~1369CE39~676CE544~0E29916C~97FBA4F3~ED6A31BD}$\\
+%
+\hline
+$\phantom{\langle}K_0$ & 
+$\hex{DAC4D8F4~11F9C523~D28BBAAB~32A5270E~4DFA1F0F~757EF8E0~F30AF08F~BDE1E7F4}$\\
+%
+\hline
+$\phantom{\langle}K_1$ & 
+$\hex{54AC0582~84D679CF~4C47D3D7~2651F3E4~EF0D61D1~D0ED5BAF~8FF30B89~24E599D8}$\\
+%
+\hline
+$\phantom{\langle}T_B$ & 
+$\hex{28FD4859~D78BA971}$\\
+%
+\hline
+\hline
+%
+$\phantom{\langle}T_A$ & 
+$\hex{5D93FD9A~7CB863AA}$\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\end{appendix}
+
+\mbox{}
+\vfill
+\mbox{}
+\clearpage
