@@ -10,10 +10,10 @@ $\mathimplicit{\hello_A}$;
 
 M1 ($B\to A$): 
 $\mathimplicit{\hello_B\parallel}\ 
-\langle V_B\rangle_{4l}$;
+\langle V_B\rangle_{4\ell}$;
 
 M2 ($A\to B$): 
-$\langle V_A\rangle_{4l}\parallel Y_A\parallel T_A$;
+$\langle V_A\rangle_{4\ell}\parallel Y_A\parallel T_A$;
 
 M3 ($B\to A$): 
 $Y_B\parallel T_B$.
@@ -62,22 +62,22 @@ $V_A\leftarrow u_{A} G$;
 $K\leftarrow u_A V_B$;
 \item
 $K_0\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},\hello_A\parallel\hello_B,0)$;
+(\langle K\rangle_{2\ell},\hello_A\parallel\hello_B,0)$;
 \item
 $K_1\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},\hello_A\parallel\hello_B,1)$;
+(\langle K\rangle_{2\ell},\hello_A\parallel\hello_B,1)$;
 \item
 $K_2\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},\hello_A\parallel\hello_B,2)$;
+(\langle K\rangle_{2\ell},\hello_A\parallel\hello_B,2)$;
 \item
-$t\leftarrow\bigl\langle
-\algname{belt-hash}(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})
-\bigr\rangle_l$;
+$t\leftarrow\bigl\langle\algname{belt-hash}(
+\langle V_A\rangle_{2\ell}\parallel\langle V_B\rangle_{2\ell})
+\bigr\rangle_\ell$;
 \item
-$s_A\leftarrow (u_A-(2^l +\overline{t})d_A)\bmod q$;
+$s_A\leftarrow (u_A-(2^\ell +\overline{t})d_A)\bmod q$;
 \item
 $Y_A\leftarrow\algname{belt-cfb}
-(\langle s_A\rangle_{2l}\parallel\Cert(Id_A,Q_A),K_2,0^{128})$;
+(\langle s_A\rangle_{2\ell}\parallel\Cert(Id_A,Q_A),K_2,0^{128})$;
 \item
 $T_A\leftarrow\algname{belt-mac}(Y_A\parallel 0^{128}, K_1)$;
 \item
@@ -95,19 +95,19 @@ $T_A\leftarrow\algname{belt-mac}(Y_A\parallel 0^{128}, K_1)$;
 $K\leftarrow u_B V_A$;
 \item
 $K_0\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},\hello_A\parallel\hello_B,0)$;
+(\langle K\rangle_{2\ell},\hello_A\parallel\hello_B,0)$;
 \item
 $K_1\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},\hello_A\parallel\hello_B,1)$;
+(\langle K\rangle_{2\ell},\hello_A\parallel\hello_B,1)$;
 \item
 $K_2\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},\hello_A\parallel\hello_B,2)$;
+(\langle K\rangle_{2\ell},\hello_A\parallel\hello_B,2)$;
 \item
 проверяет, 
 что $T_A=\algname{belt-mac}
 (Y_A\parallel 0^{128}, K_1)$;
 \item
-$\langle s_A\rangle_{2l}\parallel\Cert(Id_A,Q_A)
+$\langle s_A\rangle_{2\ell}\parallel\Cert(Id_A,Q_A)
 \leftarrow\algname{belt-cfb}^{-1}(Y_A,K_2,0^{128})$;
 \item
 проверяет, что $s_A\in\{0,1,\ldots,q-1\}$;
@@ -115,15 +115,15 @@ $\langle s_A\rangle_{2l}\parallel\Cert(Id_A,Q_A)
 проверяет $\Cert(Id_A,Q_A)$;
 \item
 $t\leftarrow\bigl\langle\algname{belt-hash}
-(\langle V_A\rangle_{2l}\parallel \langle V_B\rangle_{2l})
-\bigr\rangle_l$;
+(\langle V_A\rangle_{2\ell}\parallel \langle V_B\rangle_{2\ell})
+\bigr\rangle_\ell$;
 \item
-проверяет, что $s_A G+(2^l +\overline{t})Q_A=V_A$;
+проверяет, что $s_A G+(2^\ell +\overline{t})Q_A=V_A$;
 \item
-$s_B\leftarrow (u_B-(2^l+\overline{t})d_B)\bmod q$;
+$s_B\leftarrow (u_B-(2^\ell+\overline{t})d_B)\bmod q$;
 \item
 $Y_B\leftarrow\algname{belt-cfb}
-(\langle s_B\rangle_{2l}\parallel\Cert(Id_B,Q_B),K_2,1^{128})$;
+(\langle s_B\rangle_{2\ell}\parallel\Cert(Id_B,Q_B),K_2,1^{128})$;
 \item
 $T_B\leftarrow\algname{belt-mac}
 (Y_B\parallel 1^{128}, K_1)$;
@@ -141,14 +141,14 @@ $T_B\leftarrow\algname{belt-mac}
 что $T_B=\algname{belt-mac}
 (Y_B\parallel 1^{128}, K_1)$;
 \item
-$\langle s_B\rangle_{2l}\parallel\Cert(Id_B,Q_B)
+$\langle s_B\rangle_{2\ell}\parallel\Cert(Id_B,Q_B)
 \leftarrow\algname{belt-cfb}^{-1}(Y_B,K_2,1^{128})$;
 \item
 проверяет, что $s_B\in\{0,1,\ldots,q-1\}$;
 \item
 проверяет $\Cert(Id_B,Q_B)$;
 \item
-проверяет, что $s_B G+(2^l +\overline{t})Q_B=V_B$.
+проверяет, что $s_B G+(2^\ell +\overline{t})Q_B=V_B$.
 \end{enumerate}
 \end{enumerate}
 

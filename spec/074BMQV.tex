@@ -11,11 +11,11 @@ $\mathimplicit{\hello_A}$;
 M1 ($B\to A$): 
 $\mathimplicit{\hello_B\parallel}\ 
 \mathimplicit{\Cert(Id_B, Q_B)\parallel}\ 
-\langle V_B\rangle_{4l}$;
+\langle V_B\rangle_{4\ell}$;
 
 M2 ($A\to B$): 
 $\mathimplicit{\Cert(Id_A,Q_A)\parallel}\ 
-\langle V_A\rangle_{4l}\ \mathoptional{\parallel T_A}$;
+\langle V_A\rangle_{4\ell}\ \mathoptional{\parallel T_A}$;
 
 M3 ($B\to A$): 
 $\mathoptional{T_B}$.
@@ -64,24 +64,24 @@ $V_A\leftarrow u_A G$;
 \item
 $t\leftarrow\bigl\langle
 \algname{belt-hash}
-(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})
-\bigr\rangle_{l}$;
+(\langle V_A\rangle_{2\ell}\parallel\langle V_B\rangle_{2\ell})
+\bigr\rangle_\ell$;
 \item
-$s_A\leftarrow (u_A-(2^l+\overline{t})d_A)\bmod q$;
+$s_A\leftarrow (u_A-(2^\ell+\overline{t})d_A)\bmod q$;
 \item
-$K\leftarrow s_A(V_B-(2^l+\overline{t})Q_B)$;
+$K\leftarrow s_A(V_B-(2^\ell+\overline{t})Q_B)$;
 \item
 если $K=O$, то $K\leftarrow G$;
 \item
 $K_0\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
+(\langle K\rangle_{2\ell},
 \Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
 \hello_A\parallel\hello_B,
 0)$;
 \item
 $\mathoptional{
 K_1\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
+(\langle K\rangle_{2\ell},
 \Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
 \hello_A\parallel\hello_B,
 1)}$;
@@ -103,24 +103,24 @@ $\mathoptional{T_A\leftarrow\algname{belt-mac}(0^{128},K_1)}$;
 \item
 $t\leftarrow\bigl\langle
 \algname{belt-hash}
-(\langle V_A\rangle_{2l}\parallel\langle V_B\rangle_{2l})
-\bigr\rangle_{l}$;
+(\langle V_A\rangle_{2\ell}\parallel\langle V_B\rangle_{2\ell})
+\bigr\rangle_\ell$;
 \item
-$s_B\leftarrow (u_B-(2^l+\overline{t})d_B)\bmod q$;
+$s_B\leftarrow (u_B-(2^\ell+\overline{t})d_B)\bmod q$;
 \item
-$K\leftarrow s_B(V_A-(2^l+\overline{t})Q_A)$;
+$K\leftarrow s_B(V_A-(2^\ell+\overline{t})Q_A)$;
 \item
 если $K=O$, то $K\leftarrow G$;
 \item
 $K_0\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
+(\langle K\rangle_{2\ell},
 \Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
 \hello_A\parallel\hello_B,
 0)$;
 \item
 $\mathoptional{
 K_1\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
+(\langle K\rangle_{2\ell},
 \Cert(Id_A,Q_A)\parallel \Cert(Id_B,Q_B)\parallel 
 \hello_A\parallel\hello_B,
 1)}$;

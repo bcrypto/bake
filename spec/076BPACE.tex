@@ -12,10 +12,10 @@ $\mathimplicit{\hello_B\parallel}\
 Y_B$;
 
 M2 ($A\to B$): 
-$Y_A\parallel\langle V_A\rangle_{4l}$;
+$Y_A\parallel\langle V_A\rangle_{4\ell}$;
 
 M3 ($B\to A$): 
-$\langle V_B\rangle_{4l}\ \mathoptional{\parallel T_B}$;
+$\langle V_B\rangle_{4\ell}\ \mathoptional{\parallel T_B}$;
 
 M4 ($A\to B$): 
 $\mathoptional{T_A}$.
@@ -41,7 +41,7 @@ $\mathoptional{T_A}$.
 \item
 \implicit{получает сообщение M0};
 \item
-$R_B\stackrel{R}{\leftarrow}\{0,1\}^{l}$ 
+$R_B\stackrel{R}{\leftarrow}\{0,1\}^\ell$ 
 (в соответствии с требованиями~\ref{COMMON.Ephemeral});
 \item
 $K_2\leftarrow\algname{belt-hash}(P)$;
@@ -57,13 +57,13 @@ $Y_B\leftarrow \texttt{belt-ecb}(R_B,K_2)$;
 \item
 получает сообщение M1;
 \item
-проверяет, что $|Y_B|=l$;
+проверяет, что $|Y_B|=\ell$;
 \item
 $K_2\leftarrow\algname{belt-hash}(P)$;
 \item
 $R_B\leftarrow \algname{belt-ecb}^{-1}(Y_B,K_2)$;
 \item
-$R_A\stackrel{R}{\leftarrow}\{0,1\}^{l}$
+$R_A\stackrel{R}{\leftarrow}\{0,1\}^\ell$
 (в соответствии с требованиями~\ref{COMMON.Ephemeral});
 \item
 $Y_A\leftarrow\algname{belt-ecb}(R_A,K_2)$;
@@ -86,7 +86,7 @@ $V_A\leftarrow u_A W$;
 \item
 проверяет, что~$V_A\in E_{a,b}^*(\FF_p)$;
 \item
-проверяет, что $|Y_A|=l$;
+проверяет, что $|Y_A|=\ell$;
 \item
 $R_A\leftarrow \algname{belt-ecb}^{-1}(Y_A,K_2)$;
 \item
@@ -100,16 +100,16 @@ $V_B\leftarrow u_B W$;
 $K\leftarrow u_B V_A$;
 \item
 $K_0\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
-\langle V_A\rangle_{2l}\parallel
-\langle V_B\rangle_{2l}\parallel
+(\langle K\rangle_{2\ell},
+\langle V_A\rangle_{2\ell}\parallel
+\langle V_B\rangle_{2\ell}\parallel
 \hello_A\parallel\hello_B,
 0)$;
 \item
 $\mathoptional{K_1\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
-\langle V_A\rangle_{2l}\parallel
-\langle V_B\rangle_{2l}\parallel
+(\langle K\rangle_{2\ell},
+\langle V_A\rangle_{2\ell}\parallel
+\langle V_B\rangle_{2\ell}\parallel
 \hello_A\parallel\hello_B,
 1)}$;
 \item
@@ -129,16 +129,16 @@ $\mathoptional{T_B\leftarrow\algname{belt-mac}(1^{128}, K_1)}$;
 $K\leftarrow u_A V_B$;
 \item
 $K_0\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
-\langle V_A\rangle_{2l}\parallel
-\langle V_B\rangle_{2l}\parallel
+(\langle K\rangle_{2\ell},
+\langle V_A\rangle_{2\ell}\parallel
+\langle V_B\rangle_{2\ell}\parallel
 \hello_A\parallel\hello_B,
 0)$;
 \item
 $\mathoptional{K_1\leftarrow\algname{bake-kdf}
-(\langle K\rangle_{2l},
-\langle V_A\rangle_{2l}\parallel
-\langle V_B\rangle_{2l}\parallel
+(\langle K\rangle_{2\ell},
+\langle V_A\rangle_{2\ell}\parallel
+\langle V_B\rangle_{2\ell}\parallel
 \hello_A\parallel\hello_B,
 1)}$;
 \item
